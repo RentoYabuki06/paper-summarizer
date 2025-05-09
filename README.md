@@ -117,16 +117,41 @@ paper-summarizer/
 4. **評価** → ROUGE, BLEU スコア算出＆学習曲線可視化
 5. **デプロイ** → Streamlit UI／FastAPI API
 
+## 使用例
 
-## ロードマップ  
-- [ ] GROBID 連携で節ラベル取得  
-- [ ] Hugging Face Hub へのモデル公開  
-- [ ] 多言語対応 (日本語論文要約)  
-- [ ] Airflow による定期実行ワークフロー  
+* **データ取得 (Hugging Face scientific\_papers):**
 
-## 貢献  
+  ```bash
+  python src/download.py --source hf --output_dir data/raw
+  ```
+* **データ取得 (arXiv API):**
+
+  ```bash
+  python src/download.py --source arxiv --query "covid-19" --max_results 1 --output_dir data/raw
+  ```
+* **要約 (コマンドライン):**
+
+  ```bash
+  python src/summarize.py --model t5 --input data/text/paper.txt --output results/summary.txt
+  ```
+* **Web UI へのアクセス (Streamlit):**
+
+  ```bash
+  http://localhost:8501
+  ```
+
+## ロードマップ
+
+* [ ] GROBID 連携で節ラベル取得
+* [ ] Hugging Face Hub へのモデル公開
+* [ ] 多言語対応 (日本語論文要約)
+* [ ] Airflow による定期実行ワークフロー
+
+## 貢献
+
 バグ報告や機能要望は Issue へどうぞ。Pull Request 大歓迎です。コードスタイルは `flake8` を使用。
 
-## ライセンス  
-MIT License  
+## ライセンス
+
+MIT License
 
