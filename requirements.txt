@@ -1,0 +1,6 @@
+transformers
+datasets
+sentencepiece
+nltk
+tqdm
+pdfminer.six
