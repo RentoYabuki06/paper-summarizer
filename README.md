@@ -44,7 +44,7 @@ Paper Summarizer は、学術論文のテキストを取得し、抽出型・生
 
 ## インストール
 
-```bash
+````bash
 # リポジトリをクローン
 git clone git@github.com:<ユーザー名>/paper-summarizer.git
 cd paper-summarizer
@@ -54,9 +54,12 @@ python -m venv .venv
 source .venv/bin/activate  # Windows: .venv\Scripts\activate
 
 # 必要ライブラリのインストール
+```bash
 pip install --upgrade pip
 pip install -r requirements.txt
-```
+# PDF抽出に必要なライブラリ
+pip install pdfminer.six
+````
 
 ## クイックスタート
 
@@ -66,10 +69,10 @@ pip install -r requirements.txt
    ```bash
    python src/download.py --query "deep learning" --max_results 1
    ```
-3. 前処理:
+3. 前処理 (PDF→テキスト):
 
    ```bash
-   jupyter notebook notebooks/preprocess.ipynb
+   python src/preprocess.py --pdf data/raw/example.pdf --out_text data/text/example.txt [--out_json data/text/example_sections.json]
    ```
 4. 要約:
 
@@ -154,4 +157,3 @@ paper-summarizer/
 ## ライセンス
 
 MIT License
-
